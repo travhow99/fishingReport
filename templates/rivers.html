@@ -4,6 +4,7 @@
   <title>Colorado Fishing Report</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="{{ url_for('static', filename = "style.css") }}">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -12,63 +13,64 @@
 </head>
 <body>
 
-<nav class="navbar navbar-inverse">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>                        
-      </button>
-      <a class="navbar-brand" href="#">CO Fishing Report</a>
+  <nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="http://127.0.0.1:5000/">CO Fishing Report</a>
+      </div>
+      <div class="collapse navbar-collapse" id="myNavbar">
+        <ul class="nav navbar-nav">
+          <li><a href="http://127.0.0.1:5000/">Home</a></li>
+          <li><a href="#">About</a></li>
+          <li class="dropdown full-width"><a class="dropdown-toggle" data-toggle="dropdown" href="#">River Reports<span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="/arkansas_river">Arkansas River</a></li>
+              <li><a href="/big_thompson_river">Big Thompson River</a></li>
+              <li><a href="/blue_river">Blue River</a></li>
+              <li><a href="/boulder_creek">Boulder Creek</a></li>
+              <li><a href="/poudre_river">Cache la Poudre River</a></li>
+              <li><a href="/clear_creek">Clear Creek Canyon</a></li>
+              <li><a href="/colorado_river">Colorado River</a></li>
+              <li><a href="/encampment_river">Encampment River</a></li>
+              <li><a href="/frying_pan_river">Frying Pan River</a></li>
+              <li><a href="/gray_reef_river">Gray Reef River</a></li>
+              <li><a href="/gunnison_taylor_river">Gunnison & Taylor River</a></li>
+              <li><a href="/laramie_river">Laramie River</a></li>
+              <li><a href="/north_platte_river">North Platte River</a></li>
+              <li><a href="/roaring_fork_river">Roaring Fork River</a></li>
+              <li><a href="/rocky_mtn_nat_park">Rocky Mountain National Park</a></li>
+              <li><a href="/saint_vrain_river">Saint Vrain River</a></li>
+              <li><a href="/south_boulder_creek">South Boulder Creek</a></li>
+              <li><a href="/south_platte_river">South Platte River</a></li>
+              <li><a href="/stillwater">Stillwater</a></li>
+              <li><a href="/yampa_river">Yampa River</a></li>
+            </ul>
+          </li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </div>
     </div>
-    <div class="collapse navbar-collapse" id="myNavbar">
-      <ul class="nav navbar-nav">
-        <li><a href="#">Home</a></li>
-        <li><a href="#">About</a></li>
-        <li class="dropdown full-width"><a class="dropdown-toggle" data-toggle="dropdown" href="#">River Reports<span class="caret"></span></a>
-          <ul class="dropdown-menu" role="menu">
-            <li><a href="#">Arkansas River</a></li>
-            <li><a href="#">Big Thompson River</a></li>
-            <li><a href="#">Blue River</a></li>
-            <li><a href="#">Boulder Creek</a></li>
-            <li><a href="#">Cache la Poudre River</a></li>
-            <li><a href="#">Clear Creek Canyon</a></li>
-            <li><a href="#">Colorado River</a></li>
-            <li><a href="#">Encampment River</a></li>
-            <li><a href="#">Frying Pan River</a></li>
-            <li><a href="#">Gray Reef River</a></li>
-            <li><a href="#">Gunnison & Taylor River</a></li>
-            <li><a href="#">Laramie River</a></li>
-            <li><a href="#">North Platte River</a></li>
-            <li><a href="#">Roaring Fork River</a></li>
-            <li><a href="#">Rocky Mountain National Park</a></li>
-            <li><a href="#">Saint Vrain River</a></li>
-            <li><a href="#">South Boulder Creek</a></li>
-            <li><a href="#">South Platte River</a></li>
-            <li><a href="#">Stillwater</a></li>
-            <li><a href="#">Yampa River</a></li>
-          </ul>
-        </li>
-        <li><a href="#">Contact</a></li>
-      </ul>
-    </div>
-  </div>
-</nav>
+  </nav>
 
 <div class="jumbotron">
   <div class="container text-center">
-    <h1>Colorado Fishing Report</h1>      
+    <h1>Colorado Fishing Report</h1>
   </div>
 </div>
-  
-<div class="container>">
+
+<div id="reportText" class="container>">
   <h3>{{ river}}</h3>
-  <p id="report">{{ report }}</p>
+  <p id="rockyMtnReport">{{ rockyMtnReport }}</p><p class='credit'>Report courtesy of <a href='http://www.rockymtanglers.com/' target="blank">Rocky Mountain Anglers</a> in Boulder, Colorado.</p><br>
+  <p id="stPteReport">{{ stPeteReport }}</p><p class='credit'>Report courtesy of <a href='https://stpetes.com/' target="blank">St. Peter's Fly Shop</a> in Fort Collins, Colorado.</p>
 </div>
-    
+
 <footer class="container-fluid text-center">
-  <p>Footer Text</p>
+  <p>Colorado Fishing Report 2017©</p>
 </footer>
 
 </body>
