@@ -1,5 +1,9 @@
-from flask import Flask, render_template
+from flask import Flask, redirect, request, url_for, render_template
+from firebase import firebase
+
 app = Flask(__name__)
+firebase = \
+    firebase.FirebaseApplication("https://co-fishing-report.firebaseio.com/", None)
 
 @app.route('/')
 def index():
@@ -29,12 +33,14 @@ class River:
                     self.stPeteReport = lines[3] + lines[4] + lines[5]
                 else:
                     self.stPeteReport = lines[4] + lines[5] + lines[6]
-            elif self.name == "Rocky Mountain National Park" or self.name == "Encampment River" or self.name == "Laramie":
+            elif self.name == "Rocky Mountain National Park" or self.name == "Encampment River":
                 self.stPeteReport = lines[2]
             elif self.name == "Upper North Platte":
                 self.stPeteReport = lines[1]
-            elif self.name == "Gray Reef River":
+            elif self.name == "Gray Reef River" or self.name == "Laramie":
                 self.stPeteReport = lines[2] + lines[3] + lines[4]
+            elif self.name == "Stillwater":
+                self.stPeteReport = lines[0] + lines[1] + lines[2] + lines[3]
 
 
     def getRocky(self):
@@ -60,6 +66,21 @@ blue.getRocky()
 @app.route("/blue_river")
 def blueData():
     return render_template('rivers.html', river = blue.name, rockyMtnReport = blue.rockyReport)
+
+#New attempt 5/30
+@app.route('/messages')
+def messages():
+  result = firebase.get('/messages', None)
+  return render_template('list.html', messages=result)
+
+@app.route('/submit_message', methods=['POST'])
+def submit_message():
+  message = {
+    'body': request.form['message'],
+    'who': request.form['who']
+  }
+  firebase.post('/boulder_creek', message)
+  return redirect(url_for('messages'))
 
 boulderCrk = River("Boulder Creek", "", "Boulder_Creek")
 boulderCrk.getRocky()
@@ -143,11 +164,11 @@ rocky.getRocky()
 def rockyData():
     return render_template('rivers.html', river = rocky.name, rockyMtnReport = rocky.rockyReport, stPeteReport = rocky.stPeteReport)
 
-stVrain = River("Saint Vrain River", "Saint_Vrain_River", "")
-stVrain.getStPete()
+stVrain = River("Saint Vrain River", "", "Saint_Vrain_River")
+stVrain.getRocky()
 @app.route("/saint_vrain_river")
 def stVrainData():
-    return render_template('rivers.html', river = stVrain.name, stPeteReport = stVrain.stPeteReport)
+    return render_template('rivers.html', river = stVrain.name, rockyReport = stVrain.rockyReport)
 
 sBoulderCrk = River("South Boulder Creek", "", "South_Boulder_Creek")
 sBoulderCrk.getRocky()
@@ -161,7 +182,7 @@ sPlatte.getRocky()
 def sPlatteData():
     return render_template('rivers.html', river = sPlatte.name, rockyMtnReport = sPlatte.rockyReport)
 
-stillwater = River("Stillwater", "stillwater", "")
+stillwater = River("Stillwater", "stillwaters", "")
 stillwater.getStPete()
 @app.route("/stillwater")
 def stillwaterData():

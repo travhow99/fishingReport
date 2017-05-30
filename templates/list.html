@@ -63,26 +63,26 @@
   </div>
 </div>
 
-<div id="reportText" class="container>">
-  <h3>{{ river}}</h3>
-  <p id="rockyMtnReport">{{ rockyMtnReport }}</p><p id="rockyCredit" class='credit'>Report courtesy of <a href='http://www.rockymtanglers.com/' target="blank">Rocky Mountain Anglers</a> in Boulder, Colorado.</p><br>
-  <p id="stPteReport">{{ stPeteReport }}</p><p id="stPeteCredit" class='credit'>Report courtesy of <a href='https://stpetes.com/' target="blank">St. Peter's Fly Shop</a> in Fort Collins, Colorado.</p>
-</div>
+{% block head %}
+  <title>Messages</title>
+{% endblock %}
 
-<div id="comments">
-  <h4>Leave me a message</h4>
-
-  <p>
-    You can leave me a message below, or see messages people have left me here
-  </p>
-
-  <div class="large-8 columns">
-  <form action="/submit_message" method="post">
-    <input type="text" placeholder="Name" name="who">
-    <textarea placeholder="Enter your message here" name="message" cols="50" rows="4"></textarea>
-    <input type="submit" value="Submit">
-  </form>
-</div>
+{% block body %}
+  <h2>Messages</h2>
+  {% if messages %}
+    <ul>
+      {% for message in messages %}
+        <li>
+          <h5>{{ messages[message].who }}</h5>
+          <p>{{ messages[message].body }}</p>
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    No messages!
+  {% endif %}
+  <a href="{{ url_for('index') }}">Go back to the main page</a>
+{% endblock %}
 
 <footer class="container-fluid text-center">
   <p>Colorado Fishing Report 2017©</p>

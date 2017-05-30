@@ -213,9 +213,25 @@
   </div><br><br>
 </div>
 
+
+
 <footer class="container-fluid text-center">
   <p>Colorado Fishing Report 2017©</p>
 </footer>
+
+<script src="https://www.gstatic.com/firebasejs/4.0.0/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyCvgS7EBGTNEr_nuCYhEHUIS1yCdMCjtvk",
+    authDomain: "co-fishing-report.firebaseapp.com",
+    databaseURL: "https://co-fishing-report.firebaseio.com",
+    projectId: "co-fishing-report",
+    storageBucket: "co-fishing-report.appspot.com",
+    messagingSenderId: "87628715151"
+  };
+  firebase.initializeApp(config);
+</script>
 
 </body>
 </html>
