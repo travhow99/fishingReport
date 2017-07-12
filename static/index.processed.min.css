@@ -12,8 +12,13 @@ footer {
   padding: 25px;
 }
 
-h1 {
-  color: green;
+#reportText {
+  width: 80%;
+  margin: 0 auto;
+}
+
+.credit {
+  text-align: center;
 }
 
 #reportText {
@@ -23,4 +28,35 @@ h1 {
 
 .credit {
   text-align: center;
+}
+
+#comments {
+  text-align: center; width: 50%; margin: auto;
+}
+
+form {
+  margin-bottom: 40px;
+}
+
+input[placeholder="Name"] {
+  float: left;
+  margin-left: 5%;
+}
+
+textarea {
+  width: 90%;
+  margin-top: 4px!important;
+}
+
+input[type=submit] {
+  width: 25%;
+  color: black;
+  float: left;
+  margin-left: 5%;
+}
+
+.lastUpdate {
+  text-align: center;
+  color: red;
+  font-style: italic;
 }
