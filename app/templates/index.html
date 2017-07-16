@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Colorado Fishing Report</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="{{ url_for('static', filename = 'style.css') }}">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="icon" href="http://i.imgur.com/aZJug6h.png">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src = "{{ url_for('static', filename = '/index.min.js') }}" ></script>
+  <style>
+  </style>
+</head>
+<body>
+
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/">CO Fishing Report</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="/">Home</a></li>
+        <li><a href="http://127.0.0.1:5000/about.html">About</a></li>
+        <li class="dropdown full-width"><a class="dropdown-toggle" data-toggle="dropdown" href="#">River Reports<span class="caret"></span></a>
+          <ul class="dropdown-menu" role="menu">
+            <li><a href="/arkansas_river">Arkansas River</a></li>
+            <li><a href="/bear_creek">Bear Creek</a></li>
+            <li><a href="/big_thompson_river">Big Thompson River</a></li>
+            <li><a href="/blue_river">Blue River</a></li>
+            <li><a href="/boulder_creek">Boulder Creek</a></li>
+            <li><a href="/poudre_river">Cache la Poudre River</a></li>
+            <li><a href="/clear_creek">Clear Creek Canyon</a></li>
+            <li><a href="/colorado_river">Colorado River</a></li>
+            <li><a href="/eagle_river">Eagle River</a></li>
+            <li><a href="/encampment_river">Encampment River</a></li>
+            <li><a href="/fraser_river">Fraser River</a></li>
+            <li><a href="/frying_pan_river">Frying Pan River</a></li>
+            <li><a href="/gray_reef_river">Gray Reef River</a></li>
+            <li><a href="/gunnison_taylor_river">Gunnison & Taylor River</a></li>
+            <li><a href="/laramie_river">Laramie River</a></li>
+            <li><a href="/north_platte_river">North Platte River</a></li>
+            <li><a href="/roaring_fork_river">Roaring Fork River</a></li>
+            <li><a href="/rocky_mtn_nat_park">Rocky Mountain National Park</a></li>
+            <li><a href="/saint_vrain_river">Saint Vrain River</a></li>
+            <li><a href="/south_boulder_creek">South Boulder Creek</a></li>
+            <li><a href="/south_platte_river">South Platte River</a></li>
+            <li><a href="/stillwater">Stillwater</a></li>
+            <li><a href="/yampa_river">Yampa River</a></li>
+          </ul>
+        </li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="jumbotron">
+  <div class="container text-center">
+    <h1>Colorado Fishing Report</h1>
+    <p>Welcome to Colorado Fishing Report, where you can find the most up to date and accurate fishing reports in the state, all in one place.</p>
+  </div>
+</div>
+
+<div id="riverLinks">
+  <div class="container-fluid bg-3 text-center">
+    <h3>Pick a River!</h3><br>
+    <div class="row">
+      <div class="col-sm-3">
+        <a href="/arkansas_river">
+          <p>Arkansas River</p>
+          <img src="http://www.mtprinceton.org/arkansas-river.jpg" class="img-thumbnail" style="width:100%" alt="Arkansas River">
+      </a>
+      </div>
+      <div class="col-sm-3">
+        <a href="/bear_creek">
+          <p>Bear Creek</p>
+          <img src="https://thecatchandthehatch.com/wp-content/uploads/2016/06/Clear-Creek-Canyon-Aerial-4-728x546.jpg" class="img-thumbnail" style="width:100%" alt="Bear Creek">
+        </a>
+      </div>
+      <div class="col-sm-3">
+        <a href="/big_thompson_river">
+          <p>Big Thompson River</p>
+          <img src="https://upload.wikimedia.org/wikipedia/commons/f/f1/Park_Narodowy_Gor_Skalistych.jpg" class="img-thumbnail" style="width:100%" alt="Big Thompson River">
+        </a>
+      </div>
+      <div class="col-sm-3">
+        <a href="/blue_river">
+          <p>Blue River</p>
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Mohawk_Lake%2C_CO.jpg/400px-Mohawk_Lake%2C_CO.jpg" class="img-thumbnail" style="width:100%" alt="Blue River">
+        </a>
+      </div>
+    </div>
+  </div><br>
+
+  <div class="container-fluid bg-3 text-center">
+    <div class="row">
+      <div class="col-sm-3">
+        <a href="/boulder_creek">
+          <p>Boulder Creek</p>
+          <img src="http://media.thedenverchannel.com/photo/2015/08/18/South%20Boulder%20Creek%20Aug17%20_OP_1_CP__1439953896200_22905203_ver1.0_640_480.jpg" class="img-thumbnail" style="width:100%" alt="Boulder Creek">
+        </a>
+      </div>
+      <div class="col-sm-3">
+        <a href="/poudre_river"
+          <p>Cache la Poudre River</p>
+          <img src="http://i.imgur.com/ldn0ntZ.jpg" class="img-thumbnail" style="width:100%" alt="Cache la Poudre River">
+        </a>
+      </div>
+      <div class="col-sm-3">
+        <a href="/clear_creek">
+          <p>Clear Creek Canyon</p>
+          <img src="https://i.vimeocdn.com/video/346692186.jpg?mw=1920&mh=1080&q=70" class="img-thumbnail" style="width:100%" alt="Clear Creek Canyon">
+        </a>
+      </div>
+      <div class="col-sm-3">
+        <a href="/colorado_river">
+          <p>Colorado River</p>
+          <img src="http://media.mnn.com/assets/images/2014/07/fly-fishing-colorado-river.jpeg" class="img-thumbnail" style="width:100%" alt="Colorado River">
+        </a>
+      </div>
+    </div>
+  </div><br>
+
+  <div class="container-fluid bg-3 text-center">
+    <div class="row">
+      <div class="col-sm-3">
+        <a href="/eagle_river">
+          <p>Eagle River</p>
+          <img src="http://erccolorado.net/Images/Projects/Complete_Restoration.JPG" class="img-thumbnail" style="width:100%" alt="Eagle River">
+        </a>
+      </div>
+      <div class="col-sm-3">
+        <a href="/encampment_river">
+          <p>Encampment River</p>
+          <img src="http://www.thearmchairexplorer.com/wyoming/w-images/national-forests/medicine-bow/encampment-river01.jpg" class="img-thumbnail" style="width:100%" alt="Encampment River">
+        </a>
+      </div>
+      <div class="col-sm-3">
+        <a href="/fraser_river">
+          <p>Fraser River</p>
+          <img src="http://images.devilsthumbranch.com/Fly-Fishing-at-Devil-s-Thumb-Ranch.jpg" class="img-thumbnail" style="width:100%" alt="Fraser River">
+        </a>
+      </div>
+      <div class="col-sm-3">
+        <a href="/frying_pan_river">
+          <p>Frying Pan River</p>
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Fryingpan_river.jpg/256px-Fryingpan_river.jpg" class="img-thumbnail" style="width:100%" alt="Frying Pan River">
+        </a>
+      </div>
+
+    </div>
+  </div><br>
+
+  <div class="container-fluid bg-3 text-center">
+    <div class="row">
+      <div class="col-sm-3">
+        <a href="/gray_reef_river">
+          <p>Gray Reef River</p>
+          <img src="http://www.anglerguide.com/wyoming/images/northplatte02.jpg" class="img-thumbnail" style="width:100%" alt="Gray Reef River">
+        </a>
+      </div>
+      <div class="col-sm-3">
+        <a href="/gunnison_taylor_river">
+          <p>Gunnison & Taylor River</p>
+          <img src="http://acgpsy.org/wp-content/uploads/2008/07/taylor-river-canyon-054.jpg" class="img-thumbnail" style="width:100%" alt="Gunnison & Taylor River">
+        </a>
+      </div>
+      <div class="col-sm-3">
+        <a href="/laramie_river">
+          <p>Laramie River</p>
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Laramie_River_in_Fort_Laramie.jpg/300px-Laramie_River_in_Fort_Laramie.jpg" class="img-thumbnail" style="width:100%" alt="Laramie River">
+        </a>
+      </div>
+      <div class="col-sm-3">
+        <a href="/north_platte_river">
+          <p>North Platte River</p>
+          <img src="http://www.scenicusa.net/images/MR11PlatteRiverPD.jpg" class="img-thumbnail" style="width:100%" alt="Upper North Platte River">
+        </a>
+      </div>
+    </div>
+  </div><br>
+
+  <div class="container-fluid bg-3 text-center">
+    <div class="row">
+      <div class="col-sm-3">
+        <a href="/roaring_fork_river">
+          <p>Roaring Fork River</p>
+          <img src="http://image.wildernet.com/graphics/colorado/rivers/roaringfork/images/roaringfork_lower.jpg" class="img-thumbnail" style="width:100%" alt="Roaring Fork River">
+        </a>
+      </div>
+      <div class="col-sm-3">
+        <a href="/rocky_mtn_nat_park">
+          <p>Rocky Mountain National Park</p>
+          <img src="http://d2gafrqace0qik.cloudfront.net/wp-content/uploads/rocky-mountain-park-fishing1.jpg" class="img-thumbnail" style="width:100%" alt="Rocky Mountain National Park">
+        </a>
+      </div>
+      <div class="col-sm-3">
+        <a href="/saint_vrain_river">
+          <p>Saint Vrain River</p>
+          <img src="http://static.panoramio.com/photos/large/2666248.jpg" class="img-thumbnail" style="width:100%" alt="Saint Vrain River">
+        </a>
+      </div>
+      <div class="col-sm-3">
+        <a href="/south_boulder_creek">
+          <p>South Boulder Creek</p>
+          <img src="http://i.imgur.com/tUb98YT.jpg" class="img-thumbnail" style="width:100%" alt="South Boulder Creek">
+        </a>
+      </div>
+
+    </div>
+  </div><br>
+  <div class="container-fluid bg-3 text-center">
+    <div class="row">
+      <div class="col-sm-3">
+        <a href="/south_platte_river">
+          <p>South Platte River</p>
+          <img src="https://photos.travelblog.org/Photos/32455/255494/f/2082099-The-South-Fork-of-the-South-Platte-River-0.jpg" class="img-thumbnail" style="width:100%" alt="South Platte River">
+        </a>
+      </div>
+      <div class="col-sm-3">
+        <a href="stillwater">
+          <p>Stillwater</p>
+          <img src="https://odis.homeaway.com/odis/listing/81ae26b3-f153-4f30-9931-b89fe50b7571.c6.jpg" class="img-thumbnail" style="width:100%" alt="Stillwater">
+        </a>
+      </div>
+      <div class="col-sm-3">
+        <a href="yampa_river">
+          <p>Yampa River</p>
+          <img src="http://sscra.cms.digital-ridge.com/media/26643/Yampa-River-Core-Trail.jpg" class="img-thumbnail" style="width:100%; height:100%;" alt="Yampa River">
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<footer class="container-fluid text-center">
+  <p>Colorado Fishing Report 2017©</p>
+</footer>
+
+<script src="https://www.gstatic.com/firebasejs/4.0.0/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyCvgS7EBGTNEr_nuCYhEHUIS1yCdMCjtvk",
+    authDomain: "co-fishing-report.firebaseapp.com",
+    databaseURL: "https://co-fishing-report.firebaseio.com",
+    projectId: "co-fishing-report",
+    storageBucket: "co-fishing-report.appspot.com",
+    messagingSenderId: "87628715151"
+  };
+  firebase.initializeApp(config);
+</script>
+
+</body>
+</html>
