@@ -458,6 +458,9 @@ def yampaData():
 
 if __name__ == '__main__':
     app.run(debug = True)
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host='0.0.0.0', port=port)
+
 #big t: 4 5 6
 #poudre: 3 4 5 6
 #upper north platte: 1
