@@ -1,9 +1,225 @@
-<!doctype html>
-<html>
-    <body>
-        <h1>Colorado Fishing Report</h1>
-        <img src="https://previews.123rf.com/images/idesign2000/idesign20001205/idesign2000120500375/13496368-Trout-fish-Stock-Vector-cartoon.jpg">
-      <h1>{{ river }}</h1>
-      <p id="report">{{ report }}</h1>
-    </body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Colorado Fishing Report</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="{{ url_for('static', filename = 'style.css') }}">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="icon" href="http://i.imgur.com/aZJug6h.png">
+</head>
+<body>
+
+  <nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="http://127.0.0.1:5000/">CO Fishing Report</a>
+      </div>
+      <div class="collapse navbar-collapse" id="myNavbar">
+        <ul class="nav navbar-nav">
+          <li><a href="http://127.0.0.1:5000/">Home</a></li>
+          <li class="dropdown full-width"><a class="dropdown-toggle" data-toggle="dropdown" href="#">River Reports<span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="/arkansas_river">Arkansas River</a></li>
+              <li><a href="/bear_creek">Bear Creek</a></li>
+              <li><a href="/big_thompson_river">Big Thompson River</a></li>
+              <li><a href="/blue_river">Blue River</a></li>
+              <li><a href="/boulder_creek">Boulder Creek</a></li>
+              <li><a href="/poudre_river">Cache la Poudre River</a></li>
+              <li><a href="/clear_creek">Clear Creek Canyon</a></li>
+              <li><a href="/colorado_river">Colorado River</a></li>
+              <li><a href="/eagle_river">Eagle River</a></li>
+              <li><a href="/encampment_river">Encampment River</a></li>
+              <li><a href="/fraser_river">Fraser River</a></li>
+              <li><a href="/frying_pan_river">Frying Pan River</a></li>
+              <li><a href="/gray_reef_river">Gray Reef River</a></li>
+              <li><a href="/gunnison_taylor_river">Gunnison & Taylor River</a></li>
+              <li><a href="/laramie_river">Laramie River</a></li>
+              <li><a href="/north_platte_river">North Platte River</a></li>
+              <li><a href="/roaring_fork_river">Roaring Fork River</a></li>
+              <li><a href="/rocky_mtn_nat_park">Rocky Mountain National Park</a></li>
+              <li><a href="/saint_vrain_river">Saint Vrain River</a></li>
+              <li><a href="/south_boulder_creek">South Boulder Creek</a></li>
+              <li><a href="/south_platte_river">South Platte River</a></li>
+              <li><a href="/stillwater">Stillwater</a></li>
+              <li><a href="/yampa_river">Yampa River</a></li>
+            </ul>
+          </li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+<div class="jumbotron">
+  <div class="container text-center">
+    <h1>Colorado Fishing Report</h1>
+  </div>
+</div>
+
+<div class="container">
+  <h3>{{ river}}</h3>
+  <div class="panel-group" id="accordion">
+    <div class="panel panel-default" id="panel-rocky-mtn">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">Rocky Mountain Anglers</a>
+        </h4>
+      </div>
+      <div id="collapse1" class="panel-collapse collapse">
+        <div class="panel-body"><p id="rockyMtnReport">{{ rockyMtnReport }}</p><p id="rockyCredit" class='credit'>Report courtesy of <a href='http://www.rockymtanglers.com/' target="blank">Rocky Mountain Anglers</a> in Boulder, Colorado.</p></div>
+      </div>
+    </div>
+
+    <div class="panel panel-default" id="panel-st-pete">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">St. Peter's Fly Shop</a>
+        </h4>
+      </div>
+      <div id="collapse2" class="panel-collapse collapse">
+        <div class="panel-body"><p id="stPteReport">{{ stPeteReport }}</p><p id="stPeteCredit" class='credit'>Report courtesy of <a href='https://stpetes.com/' target="blank">St. Peter's Fly Shop</a> in Fort Collins, Colorado.</p></div>
+      </div>
+    </div>
+
+    <div class="panel panel-default" id="panel-trouts">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion" href="#collapse3">Trouts Fly Fishing</a>
+        </h4>
+      </div>
+      <div id="collapse3" class="panel-collapse collapse">
+        <div class="panel-body"><p id="troutsReport">{{ troutsReport }}</p><p id="troutsCredit" class='credit'>Report courtesy of <a href='https://troutsflyfishing.com/'>Trouts Fly Fishing</a> in Denver, Colorado.</p></div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="container">
+  <div class="panel-group" id="accordion-1">
+    <div class="panel panel-default" id="panel-comments-1">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion-1" href="#collapse-comments">Comments</a>
+        </h4>
+      </div>
+      <div id="collapse-comments" class="panel-collapse collapse">
+        <div class="panel-body">
+          <div>
+
+              {% block body %}
+                  {% if messages %}
+                      {% for message in messages %}
+              <div class="panel panel-default">
+                <div class="panel-heading">
+                  <h5>{{ messages[message].who }}</h5>
+                  <p>{{ messages[message].time }}</p>
+                </div>
+                <div class="panel-body">
+                  <p>{{ messages[message].body }}</p>
+                </div>
+              </div>
+                      {% endfor %}
+
+                  {% else %}
+                    Leave the first message!
+                  {% endif %}
+                {% endblock %}
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+  <div id="comments">
+    <h4>Leave a comment</h4>
+
+    <p>
+      Help other anglers out by sharing your thoughts and tips on this river!
+    </p>
+
+    <div class="large-8 columns">
+      <form id="contact-form" method="post">
+        <input type="text" placeholder="Name" name="who">
+        <textarea placeholder="What's your latest report?" name="message" cols="50" rows="4"></textarea>
+        <input type="submit" value="Submit">
+      </form>
+    </div>
+
+  </div>
+</div>
+
+
+<footer class="container-fluid text-center">
+  <p>Colorado Fishing Report 2017©</p>
+</footer>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="https://www.gstatic.com/firebasejs/4.0.0/firebase.js"></script>
+<script>
+  $(document).ready(function(){
+    //Allow posting to current url
+    var currentUrl = window.location.href;
+    currentUrl = currentUrl.split("http://127.0.0.1:5000")[1] + "_msg";
+    console.log(currentUrl);
+
+  	var $rocky = $("#rockyMtnReport").html();
+
+    var result = $rocky.split("&nbsp;ft    ").pop();
+  	result = result.substring(0, result.indexOf("Report Updated On"));
+    $("#rockyMtnReport").text(result);
+
+    $updateDate = $rocky.substring($rocky.indexOf("Report Updated On"));
+
+    $("#rockyMtnReport").append("<p class='lastUpdate'>" + $updateDate + "</p>");
+
+    $("#contact-form").attr("action", currentUrl);
+    console.log($("#contact-form").attr("action"));
+  })
+</script>
+
+
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyCvgS7EBGTNEr_nuCYhEHUIS1yCdMCjtvk",
+    authDomain: "co-fishing-report.firebaseapp.com",
+    databaseURL: "https://co-fishing-report.firebaseio.com",
+    projectId: "co-fishing-report",
+    storageBucket: "co-fishing-report.appspot.com",
+    messagingSenderId: "87628715151"
+  };
+  firebase.initializeApp(config);
+</script>
+<script type=text/javascript>
+    $(function() {
+      $(function(){
+        if ($("#rockyMtnReport").text() === "") {
+          $("#rockyCredit").hide();
+          $("#panel-rocky-mtn").hide();
+        }
+        if ($("#stPteReport").text() === "") {
+          $("#stPeteCredit").hide();
+          $("#panel-st-pete").hide();
+        }
+        if ($("#troutsReport").text() === "") {
+          $("#troutsCredit").hide();
+          $("#panel-trouts").hide();
+        }
+      }),
+      $(function() {
+        var $rockyEdit = $("#rockyMtnReport").text();
+        $rockyEdit = $rockyEdit.substring($rockyEdit.indexOf('&nbsp;ft'));
+      });
+    });
+</script>
+</body>
 </html>
