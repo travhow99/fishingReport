@@ -9,7 +9,7 @@ firebase = \
 
 @app.route('/')
 def index():
-   return render_template('rivers.html')
+   return render_template('index.html')
 
 import urllib
 from bs4 import BeautifulSoup
@@ -456,8 +456,13 @@ def yampaData():
     result = firebase.get('/yampa_river', None)
     return render_template('rivers.html', river = yampa.name, rockyMtnReport = yampa.rockyReport, messages=result)
 
+# dynamic route
+@app.route("/test/<search_query>")
+def search(search_query):
+    return search_query
+
 if __name__ == '__main__':
-    app.run(debug = True)
+    app.run(host="0.0.0.0", debug = True, port=5000)
 
 
 #big t: 4 5 6
